@@ -1,0 +1,24 @@
+version: "2"
+cloud:
+  organization: "Likwi"
+  project: "Bank"
+  hostname: "aws"
+sql:
+  - engine: "postgresql"
+    queries: "db/query"
+    schema: "db/migration"
+    gen:
+      go:
+        package: "db"
+        out: "db/sqlc"
+        sql_package: "database/sql"
+        emit_json_tags: true
+        emit_interface: true
+        emit_empty_slices: true
+        emit_prepared_queries: false
+        emit_exact_table_names: false
+#        overrides:
+#          - db_type: "timestamptz"
+#            go_type: "time.Time"
+#          - db_type: "uuid"
+#            go_type: "github.com/google/uuid.UUID"
