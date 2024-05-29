@@ -27,5 +27,6 @@ func TestMain(m *testing.M) { //m -> main
 	}
 
 	testQueries = New(testDB)
+
 	os.Exit(m.Run())
 }
