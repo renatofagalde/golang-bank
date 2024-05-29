@@ -48,3 +48,10 @@ createdb --username=root --owner=root simple_bank
     JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
    WHERE NOT blocked_locks.granted;
 ```
+
+## GIN Gonic
+### docs
+[gin gonic - doc](https://github.com/gin-gonic/gin/blob/master/docs/doc.md)
+### validacoes do tipo: Currency string `json:"currency" binding:"required,oneof=USD,BRL,CAD"`
+
+### comentar sobre o tipo usado para moeda e exposição do ID interno
