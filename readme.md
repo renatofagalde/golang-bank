@@ -55,3 +55,6 @@ createdb --username=root --owner=root simple_bank
 ### validacoes do tipo: Currency string `json:"currency" binding:"required,oneof=USD,BRL,CAD"`
 
 ### comentar sobre o tipo usado para moeda e exposição do ID interno
+
+## Viper
+[viper](https://github.com/spf13/viper)

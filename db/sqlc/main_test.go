@@ -1,6 +1,7 @@
 package db
 
 import (
+	"bank/util"
 	"context"
 	"database/sql"
 	_ "github.com/lib/pq"
@@ -13,19 +14,19 @@ var testQueries *Queries
 var testDB *sql.DB
 var ctx context.Context = context.Background()
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgresql://root:oraclE44@localhost:5432/simple_bank?sslmode=disable"
-)
-
 func TestMain(m *testing.M) { //m -> main
 	var err error
+	config, err := util.LoadConfig("../..")
+	if err != nil {
+		log.Fatal("cannot read the env file")
+	}
 
-	testDB, err = sql.Open(dbDriver, dbSource)
+	testDB, err = sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
 
 	testQueries = New(testDB)
+
 	os.Exit(m.Run())
 }
