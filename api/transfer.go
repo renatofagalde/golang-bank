@@ -22,6 +22,14 @@ func (server *Server) transfer(ctx *gin.Context) {
 		return
 	}
 
+	if !server.validAccount(ctx, request.FromAccountID, request.Currency) {
+		return
+	}
+
+	if !server.validAccount(ctx, request.ToAccountID, request.Currency) {
+		return
+	}
+
 	arg := db.TransferTxParams{
 		FromAccountID: request.FromAccountID,
 		ToAccountID:   request.ToAccountID,
@@ -37,19 +45,22 @@ func (server *Server) transfer(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, account)
 }
 
-func (server *Server) validAccount(ctx gin.Context, accountID int64, currency string) bool {
+func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency string) bool {
 	account, err := server.store.GetAccount(ctx, accountID)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
-			return
+			return false
 		}
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
-		return
+		return false
 
 	}
 
 	if account.Currency != currency {
 		err := fmt.Errorf("account [%d] currency mismatch %s vs %s", accountID, account.Currency, currency)
+		ctx.JSON(http.StatusNotFound, errorResponse(err))
+		return false
 	}
+	return true
 }
