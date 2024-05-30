@@ -58,3 +58,22 @@ createdb --username=root --owner=root simple_bank
 
 ## Viper
 [viper](https://github.com/spf13/viper)
+
+## GOMock
+[gomock](go install github.com/golang/mock/mockgen@v1.6.0)
+
+add ~/go/bin to PATH
+``code
+# ORACLE Client
+export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4/:$LD_LIBRARY_PATH
+export PATH=$PATH:$LD_LIBRARY_PATH
+
+export ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
+
+export PATH=$PATH:~/go/bin
+
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+``
+
+mockgen -package mockdb -destination db/mock/store.go bank/db/sqlc Store
