@@ -83,3 +83,6 @@ source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ``
 
 mockgen -package mockdb -destination db/mock/store.go bank/db/sqlc Store
+
+
+## Parameter Validation - write something
