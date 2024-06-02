@@ -15,7 +15,7 @@ func TestStore_Transfer(t *testing.T) {
 	fmt.Println(">> before:", account1.Balance, account2.Balance)
 
 	//run n concurrent transfer transactions
-	var n int = 5
+	var n int = 50
 	var amount int64 = 100
 
 	errs := make(chan error)
