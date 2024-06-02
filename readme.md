@@ -91,3 +91,6 @@ mockgen -package mockdb -destination db/mock/store.go bank/db/sqlc Store
 
 ## JWT
 [jwt golang](https://github.com/dgrijalva/jwt-go)
+
+## Paseto
+[paseto](https://github.com/o1egl/paseto)
