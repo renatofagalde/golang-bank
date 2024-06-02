@@ -2,12 +2,13 @@ package token
 
 import (
 	"bank/util"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
 )
 
-func TestJWTMaker(t *testing.T) {
+func Test_JWTMaker(t *testing.T) {
 	maker, err := NewJWTMaker(util.RandomString(32))
 	require.NoError(t, err)
 
@@ -32,7 +33,7 @@ func TestJWTMaker(t *testing.T) {
 
 }
 
-func TestExpíredJWTToken(t *testing.T) {
+func TestExpíred_JWTToken(t *testing.T) {
 	maker, err := NewJWTMaker(util.RandomString(32))
 	require.NoError(t, err)
 
@@ -44,5 +45,24 @@ func TestExpíredJWTToken(t *testing.T) {
 	require.Error(t, err)
 	require.EqualError(t, err, ErrExpiredToken.Error())
 	require.Empty(t, payload)
+
+}
+
+func TestInvalid_JWTTokenAlgNone(t *testing.T) {
+
+	payload, err := NewPayload(util.RandomOwner(), time.Minute)
+	require.NoError(t, err)
+
+	jwtToken := jwt.NewWithClaims(jwt.SigningMethodNone, payload)
+	token, err := jwtToken.SignedString(jwt.UnsafeAllowNoneSignatureType)
+	require.NoError(t, err)
+
+	maker, err := NewJWTMaker(util.RandomString(32))
+	require.NoError(t, err)
+
+	payload, err = maker.VerifyToken(token)
+	require.Error(t, err)
+	require.EqualError(t, err, ErrInvalidToken.Error())
+	require.Nil(t, payload)
 
 }
