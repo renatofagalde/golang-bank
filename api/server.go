@@ -25,7 +25,9 @@ func NewServer(config util.Config, store db.Store) (*Server, error) {
 	server := &Server{store: store, tokenManager: tokenManager, config: config}
 
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
-		v.RegisterValidation("currency", validCurrency)
+		if err := v.RegisterValidation("currency", validCurrency); err != nil {
+			return nil, fmt.Errorf("cannot binding tags: %w", err)
+		}
 	}
 
 	server.setupRouter()
