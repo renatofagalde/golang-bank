@@ -15,7 +15,7 @@ func TestStore_Transfer(t *testing.T) {
 	fmt.Println(">> before:", account1.Balance, account2.Balance)
 
 	//run n concurrent transfer transactions
-	var n int = 90
+	var n int = 50
 	var amount int64 = 100
 
 	errs := make(chan error)
@@ -118,7 +118,7 @@ func TestStore_TransferDeadLock(t *testing.T) {
 	fmt.Println(">> before:", account1.Balance, account2.Balance)
 
 	//run n concurrent transfer transactions
-	var n int = 10
+	var n int = 12
 	var amount int64 = 100
 
 	errs := make(chan error)

@@ -10,8 +10,14 @@ dropdb:
 migrationup:
 	migrate -path db/migration -database "postgresql://root:oraclE44@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
+migrationup1:
+	migrate -path db/migration -database "postgresql://root:oraclE44@localhost:5432/simple_bank?sslmode=disable" -verbose up 1
+
 migrationdown:
 	yes | migrate -path db/migration -database "postgresql://root:oraclE44@localhost:5432/simple_bank?sslmode=disable" -verbose down
+
+migrationdown1:
+	yes | migrate -path db/migration -database "postgresql://root:oraclE44@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
 
 sqlc:
 	sqlc generate
@@ -25,4 +31,4 @@ server:
 mock:
 	mockgen -package mockdb -destination ./db/mock/store.go ./bank/db/sqlc Store
 
-.PHONEY: postgres createdb dropdb migrationup migrationdown sqlc test server mock
+.PHONEY: postgres createdb dropdb migrationup migrationdown migrationup1 migrationdown1 sqlc test server mock

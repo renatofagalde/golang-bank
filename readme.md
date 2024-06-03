@@ -49,6 +49,12 @@ createdb --username=root --owner=root simple_bank
    WHERE NOT blocked_locks.granted;
 ```
 
+## sqlc create migration
+``code
+migrate create -ext sql -dir db/migration -seq add_users
+``
+
+
 ## GIN Gonic
 ### docs
 [gin gonic - doc](https://github.com/gin-gonic/gin/blob/master/docs/doc.md)
@@ -62,9 +68,9 @@ createdb --username=root --owner=root simple_bank
 ## GOMock
 [gomock](go install github.com/golang/mock/mockgen@v1.6.0)
 
+## mockgen
 add ~/go/bin to PATH
 ``code
-# ORACLE Client
 export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_4/:$LD_LIBRARY_PATH
 export PATH=$PATH:$LD_LIBRARY_PATH
 
@@ -77,3 +83,14 @@ source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ``
 
 mockgen -package mockdb -destination db/mock/store.go bank/db/sqlc Store
+
+
+## Parameter Validation - write something
+
+## Test with loop for testCases
+
+## JWT
+[jwt golang](https://github.com/dgrijalva/jwt-go)
+
+## Paseto
+[paseto](https://github.com/o1egl/paseto)
