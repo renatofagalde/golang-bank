@@ -94,3 +94,39 @@ mockgen -package mockdb -destination db/mock/store.go bank/db/sqlc Store
 
 ## Paseto
 [paseto](https://github.com/o1egl/paseto)
+
+# Docker
+## Docker images golang
+[docker images for golang](https://hub.docker.com/_/golang)
+
+### info about container
+```shell
+docker container inspect ${container}
+```
+
+
+### list all network
+```shell
+docker network ls
+```
+
+
+### info about a network
+```shell
+docker network inspect bridge
+```
+
+### craete a network
+```shell
+docker network create golang-bank-network
+```
+
+### join container in network
+```shell
+docker network connect golang-bank-network  bank-postgres
+```
+
+### dokcer run
+````shell
+docker run --name golang-bank -p 8080:8080 -e DB_SOURCE="postgresql://root:oraclE44@bank-postgres:5432/simple_bank?sslmode=disable" -e GIN_MODE=release --net=golang-bank-network golang-bank:latest
+````
