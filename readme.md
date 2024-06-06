@@ -139,3 +139,6 @@ docker run --rm -i hadolint/hadolint < Dockerfile
 
 ### waitfor script
 [wait for script](https://github.com/eficode/wait-for/releases/download/v2.2.4/wait-for)
+
+### AWS pipeline
+[AWS pipeline](https://github.com/marketplace/actions/amazon-ecr-login-action-for-github-actions)
