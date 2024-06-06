@@ -1,8 +1,8 @@
-name: deploy to master
+name: deploy to develop
 
 on:
   push:
-    branches: ['main']
+    branches: ['develop']
 
 
 jobs:
