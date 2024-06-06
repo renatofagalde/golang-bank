@@ -130,3 +130,6 @@ docker network connect golang-bank-network  bank-postgres
 ````shell
 docker run --name golang-bank -p 8080:8080 -e DB_SOURCE="postgresql://root:oraclE44@bank-postgres:5432/simple_bank?sslmode=disable" -e GIN_MODE=release --net=golang-bank-network golang-bank:latest
 ````
+
+### waitfor script
+(wait for script)[https://github.com/eficode/wait-for/releases/download/v2.2.4/wait-for]
