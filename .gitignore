@@ -305,3 +305,5 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/go,java,intellij,node
 
 github_old
+
+MakefileDev
