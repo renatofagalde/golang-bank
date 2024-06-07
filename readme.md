@@ -142,3 +142,20 @@ docker run --rm -i hadolint/hadolint < Dockerfile
 
 ### AWS pipeline
 [AWS pipeline](https://github.com/marketplace/actions/amazon-ecr-login-action-for-github-actions)
+
+### Symetric randm value
+````shell
+openssl rand -hex 64 | head -c 32
+````
+
+## AWS Secret
+
+### AWS Secret all content
+```shel
+aws --profile dev-api secretsmanager get-secret-value --secret-id dev/bank --query SecretString --output text
+```
+
+### AWS Secret filtred
+````shell
+aws --profile dev-api secretsmanager get-secret-value --secret-id dev/bank --query SecretString --output text | jq -r 'to_entries|map("\(.key)=\(.value)")|.[]'
+````
