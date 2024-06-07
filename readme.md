@@ -148,11 +148,14 @@ docker run --rm -i hadolint/hadolint < Dockerfile
 openssl rand -hex 64 | head -c 32
 ````
 
-### AWS Secret
+## AWS Secret
+
+### AWS Secret all content
 ```shel
 aws --profile dev-api secretsmanager get-secret-value --secret-id dev/bank --query SecretString --output text
 ```
 
+### AWS Secret filtred
 ````shell
 aws --profile dev-api secretsmanager get-secret-value --secret-id dev/bank --query SecretString --output text | jq -r 'to_entries|map("\(.key)=\(.value)")|.[]'
 ````
