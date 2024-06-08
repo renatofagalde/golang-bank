@@ -13,9 +13,9 @@ FROM scratch
 WORKDIR /app
 COPY --from=builder /app/main .
 COPY --from=builder /app/migrate.linux-amd64 ./migrate
-COPY app.env .
-COPY start.sh .
-COPY wait-for.sh .
+COPY app.env ./app.env
+COPY start.sh ./start.sh
+COPY wait-for.sh ./wait-for.sh
 COPY db/migration ./migration
 
 EXPOSE 8080
