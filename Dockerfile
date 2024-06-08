@@ -8,8 +8,8 @@ RUN go build -o main main.go \
  && curl -L https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz | tar xvz
 
 ## RUN STAGE
-FROM scratch
-#FROM golang:1.22.4-alpine3.20
+#FROM scratch
+FROM golang:1.22.4-alpine3.20
 WORKDIR /app
 COPY --from=builder /app/main .
 COPY --from=builder /app/migrate.linux-amd64 ./migrate
