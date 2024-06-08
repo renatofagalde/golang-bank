@@ -2,11 +2,11 @@
 
 set -e
 
-echo "run db migration"
+echo "run db migration 05"
 ls -lh /app
+source /app/app.env
 cat /app/app.env
 echo $DB_SOURCE
-source /app/app.env
 /app/migrate -path /app/migration -database ${DB_SOURCE} -verbose up
 
 echo "start the app"
