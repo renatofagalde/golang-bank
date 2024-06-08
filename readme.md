@@ -20,7 +20,6 @@ createdb --username=root --owner=root simple_bank
 [test postgres lib](https://github.com/lib/pq)
 [testfy postgres lib](https://github.com/stretchr/testify)
 
-
 ### Lock Monitoring
 [postgres lock monitoring](https://wiki.postgresql.org/wiki/Lock_Monitoring)
 ```sql

@@ -2,7 +2,7 @@
 
 set -e
 
-echo "run db migration 06"
+echo "run db migration 08"
 echo "ls /app ----"
 ls -lh /app
 echo " ----"
