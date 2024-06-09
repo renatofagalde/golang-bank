@@ -20,7 +20,6 @@ createdb --username=root --owner=root simple_bank
 [test postgres lib](https://github.com/lib/pq)
 [testfy postgres lib](https://github.com/stretchr/testify)
 
-
 ### Lock Monitoring
 [postgres lock monitoring](https://wiki.postgresql.org/wiki/Lock_Monitoring)
 ```sql
@@ -159,3 +158,8 @@ aws --profile dev-api secretsmanager get-secret-value --secret-id dev/bank --que
 ````shell
 aws --profile dev-api secretsmanager get-secret-value --secret-id dev/bank --query SecretString --output text | jq -r 'to_entries|map("\(.key)=\(.value)")|.[]'
 ````
+
+### AWS ECR Login     
+```shell
+ aws --profile dev-api ecr get-login-password |docker login --username AWS --password-stdin 211125654907.dkr.ecr.us-east-1.amazonaws.com
+```
