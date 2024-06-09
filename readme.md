@@ -1,6 +1,6 @@
 ### docker postgres
 ```shell
-docker run --name bank-postgres -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=oraclE44 -d postgres:12-alpine
+docker run --name bank-postgres -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=xxxxxxxxxx -d postgres:12-alpine
 ```
 
 ### criando o database no shell do linux
@@ -127,7 +127,7 @@ docker network connect golang-bank-network  bank-postgres
 
 ### dokcer run
 ```shell
-docker run --name golang-bank -p 8080:8080 -e DB_SOURCE="postgresql://root:oraclE44@bank-postgres:5432/simple_bank?sslmode=disable" -e GIN_MODE=release --net=golang-bank-network golang-bank:latest
+docker run --name golang-bank -p 8080:8080 -e DB_SOURCE="postgresql://root:xxxxxxxxxx@bank-postgres:5432/simple_bank?sslmode=disable" -e GIN_MODE=release --net=golang-bank-network golang-bank:latest
 ```
 
 ### Validate Dockrfile
